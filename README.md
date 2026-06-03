@@ -2,7 +2,13 @@
 
 AWS Security Agent の検証用デモリポジトリです。
 
-まずは TypeScript/Express の Web アプリケーションを Docker コンテナとして動かし、後から Terraform で ECS/Fargate へデプロイする構成に拡張します。
+TypeScript/Express の Web アプリケーションを Docker 化し、Terraform で AWS ECS/Fargate、ALB、ECR、Route53、ACM を構築しています。
+
+公開 URL:
+
+```text
+https://app.mabodofudaisuki.dev
+```
 
 ## ディレクトリ構成
 
@@ -65,8 +71,8 @@ SQL インジェクションの検証例:
 ブラウザで以下を開き、フォームに入力して確認できます。
 
 ```text
-http://localhost:3000/users
-http://localhost:3000/login
+https://app.mabodofudaisuki.dev/users
+https://app.mabodofudaisuki.dev/login
 ```
 
 入力例:
@@ -78,8 +84,8 @@ http://localhost:3000/login
 curl で確認する場合:
 
 ```sh
-curl "http://localhost:3000/users?name='%20OR%20'1'%3D'1"
-curl "http://localhost:3000/login?username=admin&password='%20OR%20'1'%3D'1"
+curl "https://app.mabodofudaisuki.dev/users?name='%20OR%20'1'%3D'1"
+curl "https://app.mabodofudaisuki.dev/login?username=admin&password='%20OR%20'1'%3D'1"
 ```
 
 ### Docker 実行
@@ -103,7 +109,3 @@ terraform init
 terraform plan
 terraform apply
 ```
-
-## 今後の予定
-
-- AWS Security Agent によるレビューとテスト
