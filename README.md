@@ -54,9 +54,21 @@ docker build -t aws-security-agent-demo-app .
 docker run --rm -p 3000:3000 aws-security-agent-demo-app
 ```
 
+## Terraform
+
+`terraform/` 配下に AWS リソースの定義があります。
+
+現在は Docker イメージの push 先となる ECR リポジトリを作成します。
+
+```sh
+cd terraform
+terraform init
+terraform plan
+terraform apply
+```
+
 ## 今後の予定
 
-- Terraform による AWS インフラ構築
 - ECR への Docker イメージ登録
 - ECS/Fargate でのアプリケーション実行
 - AWS Security Agent の検証用エンドポイント追加
