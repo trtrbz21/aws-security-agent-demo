@@ -82,6 +82,12 @@ variable "task_memory" {
   default     = 512
 }
 
+variable "task_cpu_architecture" {
+  description = "Fargate task CPU architecture"
+  type        = string
+  default     = "ARM64"
+}
+
 variable "log_retention_days" {
   description = "CloudWatch Logs retention in days"
   type        = number

@@ -19,6 +19,11 @@ resource "aws_ecs_task_definition" "app" {
   memory                   = var.task_memory
   execution_role_arn       = aws_iam_role.ecs_task_execution.arn
 
+  runtime_platform {
+    operating_system_family = "LINUX"
+    cpu_architecture        = var.task_cpu_architecture
+  }
+
   container_definitions = jsonencode([
     {
       name      = var.container_name
@@ -77,4 +82,3 @@ resource "aws_ecs_service" "app" {
 
   tags = local.tags
 }
-
