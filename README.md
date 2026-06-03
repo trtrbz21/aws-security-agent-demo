@@ -46,6 +46,18 @@ Hello Security Agent
 OK
 ```
 
+### 検証用エンドポイント
+
+AWS Security Agent のレビューやテストで検出されやすいように、意図的に軽い脆弱性を含むエンドポイントを用意しています。
+
+```text
+GET /debug
+GET /admin
+GET /search?q=hello
+```
+
+これらはデモ用です。本番環境では使用しないでください。
+
 ### Docker 実行
 
 ```sh
@@ -69,4 +81,4 @@ terraform apply
 
 ## 今後の予定
 
-- AWS Security Agent の検証用エンドポイント追加
+- AWS Security Agent によるレビューとテスト
