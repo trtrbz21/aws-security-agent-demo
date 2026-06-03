@@ -10,13 +10,14 @@
     "dev": "ts-node src/index.ts"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "sql.js": "^1.14.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/node": "^22.15.30",
+    "@types/sql.js": "^1.4.11",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
 }
-
