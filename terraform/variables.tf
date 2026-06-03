@@ -28,6 +28,18 @@ variable "force_delete_repository" {
   default     = true
 }
 
+variable "domain_name" {
+  description = "Route53 hosted zone domain name"
+  type        = string
+  default     = "mabodofudaisuki.dev"
+}
+
+variable "app_subdomain" {
+  description = "Subdomain for the application"
+  type        = string
+  default     = "app"
+}
+
 variable "vpc_cidr" {
   description = "CIDR block for the VPC"
   type        = string

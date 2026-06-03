@@ -95,6 +95,7 @@ docker run --rm -p 3000:3000 aws-security-agent-demo-app
 `terraform/` 配下に AWS リソースの定義があります。
 
 ECR リポジトリ、ALB、ECS/Fargate などを作成します。
+Route53 と ACM を使い、`https://app.mabodofudaisuki.dev` でアクセスできるようにします。
 
 ```sh
 cd terraform

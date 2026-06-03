@@ -10,6 +10,8 @@ AWS Security Agent 検証用アプリケーションの AWS リソースを管�
 - Public Subnet x2
 - Internet Gateway
 - Application Load Balancer
+- Route53 Alias Record
+- ACM Certificate
 - ECS Cluster
 - ECS Fargate Service
 - ECS Task Definition

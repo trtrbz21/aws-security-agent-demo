@@ -11,6 +11,14 @@ resource "aws_security_group" "alb" {
     cidr_blocks = var.allowed_http_cidr_blocks
   }
 
+  ingress {
+    description = "HTTPS from internet"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = var.allowed_http_cidr_blocks
+  }
+
   egress {
     description = "All outbound traffic"
     from_port   = 0
@@ -49,4 +57,3 @@ resource "aws_security_group" "ecs" {
     Name = "${var.project_name}-ecs-sg"
   })
 }
-

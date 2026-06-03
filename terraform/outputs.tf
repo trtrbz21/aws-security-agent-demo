@@ -15,10 +15,15 @@ output "alb_dns_name" {
 
 output "app_url" {
   description = "Application URL"
-  value       = "http://${aws_lb.app.dns_name}"
+  value       = "https://${local.app_domain_name}"
 }
 
 output "health_check_url" {
   description = "Application health check URL"
-  value       = "http://${aws_lb.app.dns_name}/health"
+  value       = "https://${local.app_domain_name}/health"
+}
+
+output "app_domain_name" {
+  description = "Application domain name"
+  value       = local.app_domain_name
 }
