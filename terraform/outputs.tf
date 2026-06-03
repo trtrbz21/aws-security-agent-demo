@@ -8,3 +8,17 @@ output "ecr_repository_url" {
   value       = aws_ecr_repository.app.repository_url
 }
 
+output "alb_dns_name" {
+  description = "ALB DNS name"
+  value       = aws_lb.app.dns_name
+}
+
+output "app_url" {
+  description = "Application URL"
+  value       = "http://${aws_lb.app.dns_name}"
+}
+
+output "health_check_url" {
+  description = "Application health check URL"
+  value       = "http://${aws_lb.app.dns_name}/health"
+}
