@@ -79,7 +79,7 @@ variable "image_tag" {
 variable "desired_count" {
   description = "Desired number of ECS tasks"
   type        = number
-  default     = 1
+  default     = 0
 }
 
 variable "task_cpu" {
